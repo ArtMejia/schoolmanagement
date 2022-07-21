@@ -7,6 +7,7 @@ public class Teacher {
     private int id;
     private String name;
     private int salary;
+    private int salaryEarned;
 
     /**
      * Creates new teacher object
@@ -18,6 +19,7 @@ public class Teacher {
         this.id = id;
         this.name = name;
         this.salary = salary;
+        this.salaryEarned = 0;
     }
 
     /**
@@ -50,5 +52,24 @@ public class Teacher {
      */
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    /**
+     * Adds salaryEarned
+     * removes from total money earned by the school
+     * @param salary
+     */
+    public void receiveSalary(int salary) {
+        salaryEarned += salary;
+        School.updateTotalMoneySpent(salary);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("");
+        sb.append("Teachers name ").append(name).append(" ");
+        sb.append("Total salary earned so far $").append(salaryEarned);
+        sb.append("");
+        return sb.toString();
     }
 }
